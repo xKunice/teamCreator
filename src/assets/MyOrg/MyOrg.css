@@ -1,0 +1,22 @@
+.orgSection{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.orgSection h3{
+    font-size: 40px;
+    font-weight: 400;
+    color: #6278F7;
+    padding-bottom: 24px;
+    border-bottom: #6278F7 4px solid;
+}
+.orgSection img {
+    position: absolute;
+    right: 20%;
+    cursor: pointer;
+    
+}
+.orgSection img:active{
+    width: 9%;
+}
