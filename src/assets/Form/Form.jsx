@@ -12,6 +12,7 @@ const Form = (props) =>{
     const [photo, setPhoto] = useState("")
     const [team,setTeam] = useState("")
 
+    const {registerPerson} = props;
 
     const sendManage= (event) => {
 
@@ -23,7 +24,7 @@ const Form = (props) =>{
             photo: photo,
             team: team
         }
-    
+        registerPerson(sendData)
     }
 
     return <section className="form">

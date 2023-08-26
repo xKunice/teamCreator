@@ -2,13 +2,15 @@ import "./Person.css"
 
 const Person = (props) =>{
 
+    const {name, post, photo, team} = props.data
+    const {primaryColor} = props
 return <div className="card">
-         <div className="head">
-            <img src="https://github.com/xkunice.png" alt="kunice" />
+         <div className="head" style={{backgroundColor: primaryColor}}>
+            <img src={photo} alt={name} />
         </div>
         <div className="info">
-            <h4>Andres Betancourt</h4>
-            <h5>El Pro</h5>
+            <h4>{name}</h4>
+            <h5>{post}</h5>
         </div>
    </div>
 }

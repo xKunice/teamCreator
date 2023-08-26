@@ -3,13 +3,18 @@ import Form from '../Form/Form';
 import Header from '../header/header';
 import MyOrg from '../MyOrg/MyOrg';
 import Team from '../Team/Team';
+import Footer from '../footer/footer';
 
 const App=() => {
 
     const [showForm, updateForm] = useState(false)
-
+    const [persons, updatePerson] = useState([])
     const showChange = () =>{
         updateForm(!showForm)
+    }
+
+    const registerPerson = (person) =>{
+        updatePerson([...persons, person])
     }
 
     const teams = [
@@ -53,15 +58,25 @@ const App=() => {
 
     return <>
         <Header />
-        {showForm === true ? <Form teams={teams.map((team) => team.title)}/> : <></>}
+        {showForm && <Form
+         teams={teams.map((team) => team.title)}
+         registerPerson={registerPerson}
+         />
+        
+        }
         
         <MyOrg showChange={showChange} />
         {teams.map((team, index) => (
 
-            <Team key={index} title={team.title} primaryColor={team.primaryColor} secondColor={team.secondColor}/>
+            <Team key={index} 
+            title={team.title} 
+            primaryColor={team.primaryColor} 
+            secondColor={team.secondColor}
+            persons={persons.filter( person => person.team === team.title)}
+            />
 
         ))}
-        
+        <Footer />
     </>
 }  
 
