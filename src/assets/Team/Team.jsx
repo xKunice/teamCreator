@@ -3,7 +3,7 @@ import Person from "../person/person";
 import hexToRgba from "hex-to-rgba";
 const Team = (props) =>{
 
-    const {primaryColor, secondColor, title} = props
+    const {primaryColor, secondColor, title, id} = props
     const {persons, deletePerson, colorUpdate} = props
 
     return persons.length > 0 &&
@@ -13,7 +13,7 @@ const Team = (props) =>{
             className="input-color"
             value={primaryColor}
             onChange={(event)=>{
-                colorUpdate(event.target.value, title)
+                colorUpdate(event.target.value, id)
             }}
         />
         <h3 style={{ borderBottom: `4px solid ${props.primaryColor}` }}>{props.title}</h3>
