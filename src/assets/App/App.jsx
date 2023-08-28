@@ -9,15 +9,8 @@ const App=() => {
 
     const [showForm, updateForm] = useState(false)
     const [persons, updatePerson] = useState([])
-    const showChange = () =>{
-        updateForm(!showForm)
-    }
 
-    const registerPerson = (person) =>{
-        updatePerson([...persons, person])
-    }
-
-    const teams = [
+    const [teams, updateTeams] = useState([
         {
             title:"Programación",
             primaryColor:"#57C278",
@@ -54,7 +47,34 @@ const App=() => {
             secondColor:"#FFEEDF"
         }
         
-    ]
+    ])
+
+    const showChange = () =>{
+        updateForm(!showForm)
+    }
+
+    const registerPerson = (person) =>{
+        updatePerson([...persons, person])
+    }
+
+    const deletePerson = () => {
+        console.log("hola")
+    }
+
+    const colorUpdate = (color, title) =>{
+        const teamsUpdate = teams.map(
+            (team) =>{
+                if (team.title === title){
+                    team.primaryColor = color
+                } 
+
+                return team
+            }
+        )
+        updateTeams(teamsUpdate)
+    }
+
+    
 
     return <>
         <Header />
@@ -73,6 +93,8 @@ const App=() => {
             primaryColor={team.primaryColor} 
             secondColor={team.secondColor}
             persons={persons.filter( person => person.team === team.title)}
+            deletePerson={deletePerson}
+            colorUpdate ={colorUpdate}
             />
 
         ))}
